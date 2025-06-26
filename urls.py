@@ -1,11 +1,12 @@
+# GoldenCafe/urls.py
+from django.urls import re_path, include
+from rest_framework.routers import SimpleRouter
+from .views import ProductoViewSet
 
-from django.contrib import admin
-from django.urls import path, include  # ← esto es importante
+router = SimpleRouter()
+router.register(r'productos', ProductoViewSet)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/', include('GoldenCafe.urls')),  # ← esta línea conecta tu app
+    re_path(r'', include(router.urls)),
 ]
-
-
 
